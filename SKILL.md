@@ -1,18 +1,3 @@
-<!--
-  Agent Skill: codebase-tutorial
-  Open SKILL.md standard — portable across agent runtimes.
-
-  Install locations (copy this whole `codebase-tutorial/` folder):
-    • Claude Code (project):  .claude/skills/codebase-tutorial/SKILL.md
-    • Claude Code (personal): ~/.claude/skills/codebase-tutorial/SKILL.md
-    • GitHub Copilot CLI:      ~/.copilot/agents/codebase-tutorial/SKILL.md
-    • Repo-portable (here):    .github/skills/codebase-tutorial/SKILL.md
-
-  Reference files (load on demand, keep this file lean):
-    references/PIPELINE.md   — full step-by-step procedure
-    references/TEMPLATES.md  — chapter / index / Mermaid templates
-    references/SCHEMAS.md    — JSON schemas for the scratch files
--->
 ---
 name: codebase-tutorial
 description: >-
