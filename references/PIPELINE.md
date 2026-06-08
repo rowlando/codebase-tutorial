@@ -82,6 +82,26 @@ Guidance:
 - Stay within `5`–`max_abstractions` (hard ceiling 10). If you find more,
   merge the smallest/overlapping ones.
 
+**Essence before scaffolding.** Sort candidate abstractions into two kinds:
+- **Essence** — what makes *this* codebase distinct: its domain model, the core
+  algorithm, the data it works on, the thing it uniquely does.
+- **Scaffolding** — generic plumbing present in almost any app of this kind:
+  framework bootstrap, middleware, auth/sign-in, sessions, config validation,
+  logging, error helpers, i18n wiring.
+
+Spend the abstraction budget on essence first. Scaffolding still deserves
+coverage, but **merge it** — one "App Bootstrap & Middleware" abstraction beats
+five separate plumbing chapters that a reader could learn from any framework
+tutorial. Aim for the essence to be the *majority* of abstractions unless the
+codebase really is mostly infrastructure (a framework, a template, a CLI shell).
+Watch for the failure mode where a thin, declarative domain layer gets one chapter
+while its host template's plumbing gets six — that inverts what a newcomer needs.
+
+**Focus.** If a `focus` was given, treat its files/area as essence regardless of
+size: pull its abstractions to the front of your thinking, consider splitting it
+into finer-grained abstractions (so it earns more chapters), and merge unrelated
+scaffolding hard to make room. Keep just enough of the rest for context.
+
 Write `abstractions.json` (see SCHEMAS.md). The order here is the *discovery*
 order; teaching order is decided in step 4.
 
@@ -115,6 +135,9 @@ Order the abstraction indices so that:
 - Foundational concepts and **entry points** come first (the thing a reader meets
   first when the program runs, or the core data model everything builds on).
 - Dependents come after the things they depend on.
+- If a `focus` was given, bring its chapters early (after only the minimal
+  foundation needed to understand them) rather than burying them behind every
+  piece of scaffolding.
 
 Write `order.json` — an array of abstraction indices, each appearing **exactly
 once** (see SCHEMAS.md).
@@ -129,6 +152,10 @@ For each abstraction (the "map"):
 - Use the chapter template in TEMPLATES.md.
 - **Motivate "why it exists" before "how it works".** Open with the problem it
   solves and an analogy.
+- **Spend depth where it matters.** Essence and focused abstractions get the
+  fuller treatment — more snippets, more walk-through, the *why* behind design
+  choices. Merged scaffolding chapters can be shorter: explain the role, show one
+  representative snippet, and move on rather than touring every file.
 - Ground everything in the **actual code**: cite files by their manifest path and
   include **short** snippets (a few lines, not whole files). Explain snippets
   line-by-relevant-line.

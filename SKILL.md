@@ -29,9 +29,32 @@ Parse these from the user's request; apply defaults when unstated.
 | `include` | language defaults (see PIPELINE) | Glob(s) of files to consider. |
 | `exclude` | vendored/build dirs (see PIPELINE) | Glob(s) to skip. |
 | `language` | `English` | Natural language for the generated tutorial prose. |
+| `focus` | _none (balanced)_ | Optional emphasis: a topic, concern, or path to centre the tutorial on (e.g. "the pricing domain", "the auth flow", "src/journeys"). Skews curation, chapter order, and depth toward it; demotes everything else to background. |
 
 Confirm the resolved `target` and `output_dir` with the user before writing if
 either is ambiguous.
+
+## What to emphasise
+
+By default the tutorial gives balanced weight to the codebase's main parts, which
+suits most repos. Two adjustments make it consistently more useful:
+
+- **Lead with what makes this codebase distinct.** Favour the abstractions that
+  capture the project's *purpose* — its domain model, core algorithm, the thing it
+  uniquely does — over generic scaffolding present in almost every app of its kind
+  (framework bootstrap, auth, sessions, config plumbing, logging, error helpers).
+  Cover scaffolding too, but **group and condense it** so it never outnumbers or
+  crowds out the domain. A reader should finish understanding *what this system is
+  for*, not just *how a typical app in this stack is wired*.
+- **Honour an explicit `focus`.** When the user names a focus (an area, a path, or
+  a concern), centre the tutorial on it: curate the manifest toward its files,
+  order its chapters early, give it more and deeper chapters, and demote the rest
+  to brief background. Don't drop the connective tissue a newcomer needs to place
+  the focus in context — just spend the page budget where they asked.
+
+These are emphasis defaults, not hard rules: if a codebase's scaffolding genuinely
+*is* the interesting part (e.g. a framework or a starter template), or the user
+asks to onboard onto the infrastructure, weight it accordingly.
 
 ## Hard rules
 
