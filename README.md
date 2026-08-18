@@ -118,3 +118,26 @@ skills/agents directory.
 
 The skill only ever **writes** into its `output_dir` (inside your project), so no
 write permissions outside the working directory are needed.
+
+## Acknowledgements
+
+This skill was inspired by
+[**PocketFlow-Tutorial-Codebase-Knowledge**](https://github.com/The-Pocket/PocketFlow-Tutorial-Codebase-Knowledge)
+by [The-Pocket](https://github.com/The-Pocket) — a Python project that analyses a
+repository and generates a beginner-friendly tutorial explaining how it works.
+Its pipeline (identify core abstractions → analyse their relationships → order
+them for teaching → write a chapter each → combine into an index with a diagram)
+is the shape this skill follows.
+
+The difference is where the intelligence lives. PocketFlow is a Python program
+that orchestrates calls to an LLM API; this skill is a plain `SKILL.md` that
+instructs an agent which *is* the model. So there's nothing to install and no
+separate API key to configure — if you can run the agent, you can run the skill.
+
+No code was copied — this is an independent implementation of the same idea. The
+upstream project is MIT licensed.
+
+## Licence
+
+MIT — see [`LICENSE`](./LICENSE). Use it, modify it, redistribute it, build on it
+commercially; just keep the copyright notice.
